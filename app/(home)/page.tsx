@@ -10,6 +10,7 @@ export default function Home() {
 	const { password } = useAppSelector(state => state.auth)
 	return (
 		<div>
+			{/* for suspense */}
 			{!password || password !== ADMIN_PASSWORD ? <CustomLoader /> : null}
 			<Cards />
 			<HomeTable />

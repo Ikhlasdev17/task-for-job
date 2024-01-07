@@ -38,14 +38,21 @@ export default function LoginForm() {
 				title: 'Password is incorrect!',
 				action: <ToastAction altText='Try again'>Try again</ToastAction>,
 			})
+			return
 		}
+
+		toast({
+			variant: 'default',
+			title: 'Welcome to dashboard!',
+		})
 	}
 
 	return (
 		<div className='sm:w-[90%] md:w-[400px] rounded-md border p-6 my-24 mx-auto'>
-			<div className=''>
-				<Logo isCentered />
-			</div>
+			{/* logo */}
+			<Logo isCentered />
+
+			{/* form for login */}
 			<form onSubmit={submitForm} className='mt-6'>
 				<Input
 					onChange={e => setPasswordValue(e.target.value)}

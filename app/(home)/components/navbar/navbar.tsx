@@ -22,7 +22,7 @@ export default function Navbar() {
 			<Logo />
 
 			<div className='flex items-center gap-6'>
-				<ul className='flex gap-x-2'>
+				<ul className='md:flex gap-x-2 sm:hidden '>
 					<li>
 						<Link href={'/'}>Home</Link>
 					</li>

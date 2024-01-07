@@ -9,11 +9,10 @@ import { ToastAction } from '@/components/ui/toast'
 import { useToast } from '@/components/ui/use-toast'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks'
 import { login } from '@/store/auth/auth.slice'
+import { ADMIN_PASSWORD } from '@/utils/password'
 import { CheckedState } from '@radix-ui/react-checkbox'
 import { useRouter } from 'next/navigation'
 import { ChangeEvent, useEffect, useState } from 'react'
-
-export const ADMIN_PASSWORD = 'Oybek'
 
 export default function LoginForm() {
 	const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -43,7 +42,7 @@ export default function LoginForm() {
 	}
 
 	return (
-		<div className='w-[400px] rounded-md border p-6 my-24 mx-auto'>
+		<div className='sm:w-[90%] md:w-[400px] rounded-md border p-6 my-24 mx-auto'>
 			<div className=''>
 				<Logo isCentered />
 			</div>

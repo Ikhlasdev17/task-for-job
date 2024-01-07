@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { ToastAction } from '@/components/ui/toast'
+import { useToast } from '@/components/ui/use-toast'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hooks'
 import { login } from '@/store/auth/auth.slice'
 import { CheckedState } from '@radix-ui/react-checkbox'
@@ -19,6 +21,7 @@ export default function LoginForm() {
 	const { password } = useAppSelector(state => state.auth)
 	const dispatch = useAppDispatch()
 	const router = useRouter()
+	const { toast } = useToast()
 
 	useEffect(() => {
 		if (password === ADMIN_PASSWORD) {
@@ -29,6 +32,14 @@ export default function LoginForm() {
 	function submitForm(e: ChangeEvent<HTMLFormElement>) {
 		e.preventDefault()
 		dispatch(login(passwordValue))
+
+		if (passwordValue !== ADMIN_PASSWORD) {
+			toast({
+				variant: 'destructive',
+				title: 'Password is incorrect!',
+				action: <ToastAction altText='Try again'>Try again</ToastAction>,
+			})
+		}
 	}
 
 	return (
